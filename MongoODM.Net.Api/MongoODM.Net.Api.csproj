@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="AkkaNetApiAdapter" Version="1.1.2" />
+        <PackageReference Include="EasyCoreAPI" Version="1.1.1" />
+        <PackageReference Include="JwtAdapter" Version="1.1.1" />
+        <PackageReference Include="Mapster" Version="7.0.0" />
+        <PackageReference Include="MongoODM.Net" Version="1.0.0" />
     </ItemGroup>
 
 </Project>

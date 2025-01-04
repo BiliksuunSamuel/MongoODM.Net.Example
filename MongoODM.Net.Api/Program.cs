@@ -1,21 +1,35 @@
+using EasyCoreAPI.Extensions;
+using EasyCoreAPI.Options;
+using MongoODM.Net.Api.Models;
+using MongoODM.Net.Api.Services;
+using MongoODM.Net.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+var configuration=builder.Configuration;
+var services=builder.Services;
+
+//
+services.AddEndpointsApiExplorer();
+services.AddAPIControllers();
+services.AddAPIVersioning(1);
+services.AddAPISwaggerGen(configuration, AuthScheme.Bearer);
+services.AddMongoDbContext(configuration);
+
+//services
+services.AddScoped<ICustomerService, CustomerService>();
+
+//Add Collections
+services.AddMongoRepository<Customer>("ExampleDb");
+services.AddMongoRepository<Inventory>("InventoryDb");
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
+app.UseRouting();
+app.UseAPISwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
