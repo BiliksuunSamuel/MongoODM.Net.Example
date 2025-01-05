@@ -4,11 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="AkkaNetApiAdapter" Version="1.1.2" />
-        <PackageReference Include="EasyCoreAPI" Version="1.1.1" />
+        <PackageReference Include="EasyCoreAPI" Version="1.1.13" />
         <PackageReference Include="JwtAdapter" Version="1.1.1" />
         <PackageReference Include="Mapster" Version="7.0.0" />
         <PackageReference Include="MongoODM.Net" Version="1.0.0" />
